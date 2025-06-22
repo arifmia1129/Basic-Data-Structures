@@ -2,28 +2,36 @@
 using namespace std;
 
 int main () {
-    int n, t;
+    int n, q;
 
-    cin >> n >> t;
+    cin >> n >> q;
 
-    vector<int> v(n);
+    vector<long long int> v(n + 1);
+    vector<long long int> sum(n + 1);
 
-    for(int i = 0; i < n; i++) {
+    for(int i = 1; i <= n; i++) {
         cin >> v[i];
+        if(i > 1) {
+            sum[i] = sum[i - 1] + v[i];
+        }else {
+           sum[i] = v[i];
+        }
     }
 
-    for(int i = 0; i < t; i++) {
-        int l, r;
+    while(q--) {
+        long long int l, r;
 
         cin >> l >> r;
 
-        int sum = 0;
+        long long int total = 0;
 
-        for(int j = l - 1; j < r; j++) {
-            sum += v[j];
-        }
+       if(l == 1) {
+        total = sum[r];
+       }else {
+        total = sum[r] - sum[l - 1];
+       }
 
-        cout << sum << endl;
+        cout << total << endl;
     }
 
     return 0;
