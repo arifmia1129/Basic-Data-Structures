@@ -16,7 +16,7 @@ int main () {
 
     int is_found = 0;
 
-      for(int i = 0; i < n; i++) {
+      for(int i = 0; i < n - 1; i++) {
         if(v[i] == v[i + 1]) {
             is_found = 1;
             break;
