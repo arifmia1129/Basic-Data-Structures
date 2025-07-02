@@ -297,6 +297,10 @@ void insertAtSpecific(Node* head, int position, int val) {
 
     for(int i = 0; i < position - 1; i++) {
         tmp = tmp->next;
+
+        if(tmp == NULL) {
+            return;
+        }
     }
 
     newNode->next = tmp->next;
