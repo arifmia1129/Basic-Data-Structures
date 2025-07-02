@@ -35,6 +35,26 @@ int countSize(Node* head) {
     return count;
 }
 
+void isSorted(Node* head) {
+    Node* tmp = head;
+
+    int isSorted = 1;
+
+    while(tmp != NULL && tmp->next != NULL) {
+        if(tmp->val > tmp->next->val) {
+            isSorted = 0;
+            break;
+        }
+        tmp = tmp->next;
+    }
+
+    if(isSorted) {
+        cout << "YES" << endl;
+    }else{
+        cout << "NO" << endl;
+    }
+}
+
 void printMiddle(Node* head) {
     int size = countSize(head);
     
@@ -110,7 +130,8 @@ int main () {
     // printList(head);
     // countSize(head);
     // checkDuplicate(head);
-    printMiddle(head);
+    // printMiddle(head);
+    isSorted(head);
     
 
     return 0;
