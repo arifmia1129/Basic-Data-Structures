@@ -21,7 +21,7 @@ void printList(Node* head) {
     }
 }
 
-void countSize(Node* head) {
+int countSize(Node* head) {
     Node* tmp = head;
 
     int count = 0;
@@ -31,7 +31,30 @@ void countSize(Node* head) {
         tmp = tmp->next;
     }
 
-    cout << "The size of current linked list: " << count << endl;
+    // cout << "The size of current linked list: " << count << endl;
+    return count;
+}
+
+void printMiddle(Node* head) {
+    int size = countSize(head);
+    
+    int avg = size / 2;
+
+    Node* tmp = head;
+
+    int adjustVal = size % 2 == 0 ? 1 : 0;
+
+    for(int i = 0; i < avg - adjustVal; i++) {
+            tmp = tmp->next;
+    }
+
+        
+
+    if(size % 2 != 0) {
+        cout << tmp->val << endl;
+    }else {
+         cout << tmp->val <<  " " << tmp->next->val << endl;
+    }
 }
 
 void checkDuplicate(Node* head) {
@@ -86,7 +109,8 @@ int main () {
 
     // printList(head);
     // countSize(head);
-    checkDuplicate(head);
+    // checkDuplicate(head);
+    printMiddle(head);
     
 
     return 0;
