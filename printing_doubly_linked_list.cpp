@@ -82,13 +82,32 @@ void insertAtAnyPosition(Node* head, int pos, int val) {
     newNode->prev = tmp;
 }
 
-void deleteFromHead(Node* &head) {
+void deleteFromHead(Node* &head, Node* tail) {
     Node* deleteNode = head;
 
     deleteNode->next->prev = NULL;
     head = deleteNode->next;
 
+    if(head == NULL) {
+        tail = NULL;
+    }
+
     delete deleteNode;
+}
+
+void deleteFromTail(Node* &head, Node* &tail) {
+    Node* deleteNode = tail;
+
+    tail = deleteNode->prev;
+
+    delete deleteNode;
+    
+    if(tail == NULL) {
+        head = NULL;
+        return;
+    }
+    
+   tail->next = NULL;
 }
 
 int main () {
@@ -105,7 +124,9 @@ int main () {
     // insertAtHead(head,tail, 100);
     // insertAtTail(head, tail, 200);
     // insertAtAnyPosition(head, 2, 500);
-    deleteFromHead(head);
+    // deleteFromHead(head, tail);
+    deleteFromTail(head, tail);
+    deleteFromTail(head, tail);
     forwardPrint(head);
     // backwardPrint(tail);
     
