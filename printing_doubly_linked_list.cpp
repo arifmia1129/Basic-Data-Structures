@@ -67,6 +67,30 @@ void insertAtTail(Node* head, Node* &tail, int val) {
     tail = newNode;
 }
 
+void insertAtAnyPosition(Node* head, int pos, int val) {
+    Node* newNode = new Node(val);
+
+    Node* tmp = head;
+
+    for(int i = 1; i < pos; i++) {
+        tmp = tmp->next;
+    }
+
+    newNode->next = tmp->next;
+    tmp->next->prev = newNode;
+    tmp->next = newNode;
+    newNode->prev = tmp;
+}
+
+void deleteFromHead(Node* &head) {
+    Node* deleteNode = head;
+
+    deleteNode->next->prev = NULL;
+    head = deleteNode->next;
+
+    delete deleteNode;
+}
+
 int main () {
     Node* head = new Node(10);
     Node* a = new Node(20);
@@ -78,11 +102,12 @@ int main () {
     a->next = tail;
     tail->prev = a;
 
-    insertAtHead(head,tail, 100);
-    insertAtTail(head, tail, 200);
-
+    // insertAtHead(head,tail, 100);
+    // insertAtTail(head, tail, 200);
+    // insertAtAnyPosition(head, 2, 500);
+    deleteFromHead(head);
     forwardPrint(head);
-    backwardPrint(tail);
+    // backwardPrint(tail);
     
     return 0;
 }
