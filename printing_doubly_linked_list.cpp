@@ -37,8 +37,14 @@ void backwardPrint(Node* tail) {
     cout << endl;
 }
 
-void insertAtHead(Node* &head, int val) {
+void insertAtHead(Node* &head, Node* tail, int val) {
     Node* newNode = new Node(val);
+
+    if(head == NULL) {
+        head = newNode;
+        tail= newNode;
+        return;
+    }
 
     newNode->next = head;
     head->prev = newNode;
@@ -46,8 +52,14 @@ void insertAtHead(Node* &head, int val) {
     head = newNode;
 }
 
-void insertAtTail(Node* &tail, int val) {
+void insertAtTail(Node* head, Node* &tail, int val) {
     Node* newNode = new Node(200);
+
+     if(head == NULL) {
+        head = newNode;
+        tail= newNode;
+        return;
+    }
 
     tail->next = newNode;
     newNode->prev = tail;
@@ -66,8 +78,8 @@ int main () {
     a->next = tail;
     tail->prev = a;
 
-    insertAtHead(head, 100);
-    insertAtTail(tail, 200);
+    insertAtHead(head,tail, 100);
+    insertAtTail(head, tail, 200);
 
     forwardPrint(head);
     backwardPrint(tail);
