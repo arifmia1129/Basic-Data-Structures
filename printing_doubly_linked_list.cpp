@@ -46,6 +46,15 @@ void insertAtHead(Node* &head, int val) {
     head = newNode;
 }
 
+void insertAtTail(Node* &tail, int val) {
+    Node* newNode = new Node(200);
+
+    tail->next = newNode;
+    newNode->prev = tail;
+
+    tail = newNode;
+}
+
 int main () {
     Node* head = new Node(10);
     Node* a = new Node(20);
@@ -58,6 +67,7 @@ int main () {
     tail->prev = a;
 
     insertAtHead(head, 100);
+    insertAtTail(tail, 200);
 
     forwardPrint(head);
     backwardPrint(tail);
