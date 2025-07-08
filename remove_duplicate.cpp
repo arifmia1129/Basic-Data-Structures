@@ -12,65 +12,70 @@ class Node {
     }
 };
 
+bool isExist(Node* head, int val) {
+    Node* tmp = head;
+
+    bool exist = false;
+
+    while(tmp != NULL) {
+        if(tmp->val == val) {
+            exist = true;
+            break;
+        }
+
+        tmp = tmp->next;
+    }
+
+    return exist;
+}
+
 void insertAtTail(Node* &head, Node* &tail, int val) {
+    if(isExist(head, val)) {
+        return;
+    }
+
     Node* newNode = new Node(val);
 
     if(head == NULL) {
         head = newNode;
         tail = newNode;
+        return;
     }
 
     tail->next = newNode;
     tail = newNode;
 }
 
+
 void printList(Node* head) {
     Node* tmp = head;
 
     while(tmp != NULL) {
-        cout << tmp->val << endl;
+        cout << tmp->val << " ";
         tmp = tmp->next;
     }
 }
-void deleteHeadNode(Node* &head) {
-   Node* deleteNode = head;
-
-   head = deleteNode->next;
-
-   delete deleteNode;
-}
 
 
 
-void reversePrint(Node* tmp) {
-    if(tmp == NULL) {
-        return;
-    }
 
-    reversePrint(tmp->next);
-    cout << tmp->val << endl;
-}
 
 int main () {
     Node* head = NULL;
     Node* tail = NULL;
 
-    while(1) {
-        int x;
+    while(true) {
+        int val;
 
-        cin >> x;
+        cin >> val;
 
-
-        if(x == -1) {
+        if(val == -1) {
             break;
         }
 
-
-        insertAtTail(head, tail, x);
-        
+        insertAtTail(head, tail, val);
     }
 
-    deleteHeadNode(head);
     printList(head);
     
     return 0;
