@@ -110,6 +110,39 @@ void deleteFromTail(Node* &head, Node* &tail) {
    tail->next = NULL;
 }
 
+int calculateSize(Node* head) {
+    int size = 0;
+
+    Node* tmp = head;
+
+    while(tmp != NULL) {
+        tmp = tmp->next;
+        size++;
+    }
+
+    return size;
+}
+
+void deleteFromAnyPos(Node* head, int pos) {
+  
+    if(calculateSize(head) - 1 <= pos) {
+        return;
+    }
+
+    Node* tmp = head;
+
+    for(int i = 1; i < pos; i++) {
+        tmp = tmp->next;
+    }
+    
+
+    Node* deleteNode = tmp->next;
+    tmp->next = deleteNode->next;
+    deleteNode->next->prev = tmp;
+
+    delete deleteNode;
+}
+
 int main () {
     Node* head = new Node(10);
     Node* a = new Node(20);
@@ -125,8 +158,9 @@ int main () {
     // insertAtTail(head, tail, 200);
     // insertAtAnyPosition(head, 2, 500);
     // deleteFromHead(head, tail);
-    deleteFromTail(head, tail);
-    deleteFromTail(head, tail);
+    // deleteFromTail(head, tail);
+    // deleteFromTail(head, tail);
+    deleteFromAnyPos(head, 1);
     forwardPrint(head);
     // backwardPrint(tail);
     
