@@ -8,29 +8,43 @@ int main () {
 
     // int a[3] = {100, 200, 300};
 
-    vector<int> v = {5, 10, 15};
+    // vector<int> v = {5, 10, 15};
 
     // list<int> l2(a, a+3);
 
-    list<int> l2(v.begin(), v.end());
+    // list<int> l2(v.begin(), v.end());
 
     // l2.clear();
 
-    if(l2.empty()) {
-        cout << "The list is empty" << endl;
-    }
+    // if(l2.empty()) {
+    //     cout << "The list is empty" << endl;
+    // }
 
-    l2.resize(5, 100);
+    // l2.resize(5, 100);
 
-    int size = l2.size();
+    // int size = l2.size();
 
-    cout << "Size of list: " << size << endl;
+    // cout << "Size of list: " << size << endl;
 
     // for(auto it = l.begin(); it != l.end(); it++) {
     //     cout << *it << " ";
     // }
 
-    for(int v : l2) {
+    // list<int> l2 = l;
+    // list<int> l2;
+
+    // l2.assign(l.begin(), l.end());
+
+    l.push_back(40);
+    l.push_front(0);
+
+    // cout << *next(l.begin(), 2) << endl;
+
+    list<int> new_list = {11, 22, 33};
+
+    l.insert(next(l.begin(), 2), new_list.begin(), new_list.end());
+
+    for(int v : l) {
         cout << v << " ";
     }
 
