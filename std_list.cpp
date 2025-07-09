@@ -14,6 +14,18 @@ int main () {
 
     list<int> l2(v.begin(), v.end());
 
+    // l2.clear();
+
+    if(l2.empty()) {
+        cout << "The list is empty" << endl;
+    }
+
+    l2.resize(5, 100);
+
+    int size = l2.size();
+
+    cout << "Size of list: " << size << endl;
+
     // for(auto it = l.begin(); it != l.end(); it++) {
     //     cout << *it << " ";
     // }
