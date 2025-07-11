@@ -47,13 +47,24 @@ void printList(Node* head) {
     }
 }
 
-void reversePrintList(Node* tmp) {
-    if(tmp == NULL) {
-        return;
+void removeDuplicate(Node* head) {
+   Node* l = head;
+   while(l != NULL) {
+    Node* r = head;
+
+    while(r->next != NULL) {
+        if(l->val == r->next->val) {
+            Node* deleteNode = r->next;
+            r->next = r->next->next;
+            delete deleteNode;
+            r = r->next;
+        }else {
+            r = r->next;
+        }
     }
 
-    reversePrintList(tmp->next);
-    cout << tmp->val << endl;
+    l = l->next;
+   }
 }
 
 int main () {
@@ -75,6 +86,8 @@ int main () {
 
        insertAtTail(head, tail, x);
     }
+
+    removeDuplicate(head);
 
 
     printList(head);
