@@ -55,21 +55,16 @@ void insert_at_any(Node* &head, int idx, int val) {
 }
 
 
-void forward_print(Node* head) {
-    Node* tmp = head;
-
-    while(tmp != NULL) {
-        cout << tmp->val << " ";
-        tmp = tmp->next;
+void forward_print(list<int> l) {
+    for(int val : l) {
+        cout << val << " ";
     }
     cout << endl;
 }
-void backward_print(Node* tail) {
-    Node* tmp = tail;
-
-    while(tmp != NULL) {
-        cout << tmp->val << " ";
-        tmp = tmp->prev;
+void backward_print(list<int> l) {
+    l.reverse();
+    for(int val : l) {
+        cout << val << " ";
     }
     cout << endl;
 }
@@ -128,8 +123,7 @@ void check_palindrome(Node* head, Node* tail) {
 }
 
 int main () {
-    Node* head = NULL;
-    Node* tail = NULL;
+   list<int> l;
 
    
     int n;
@@ -141,21 +135,21 @@ int main () {
 
         cin >> x >> v;
 
-        if(x != 0 && x > calculate_size(head)) {
+        if(x != 0 && x > l.size()) {
             cout << "Invalid" << endl;
         }else {
             if(x == 0) {
-                insert_at_head(head, tail, v);
-                forward_print(head);
-                backward_print(tail);
-            }else if(x == calculate_size(head)) {
-                insert_at_tail(head, tail, v);
-                forward_print(head);
-                backward_print(tail);
+                l.push_front(v);
+                forward_print(l);
+                backward_print(l);
+            }else if(x == l.size()) {
+                l.push_back(v);
+                forward_print(l);
+                backward_print(l);
             }else {
-                insert_at_any(head, x, v);
-                forward_print(head);
-                backward_print(tail);
+                l.insert(next(l.begin(), x), v);
+                forward_print(l);
+                backward_print(l);
             }
         }
     }
