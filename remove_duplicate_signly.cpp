@@ -67,6 +67,44 @@ void removeDuplicate(Node* head) {
    }
 }
 
+
+
+    void reverse(Node* &head, Node* tmp) {
+        if(tmp->next == NULL) {
+            head = tmp;
+            return;
+        }
+
+        reverse(head, tmp->next);
+        tmp->next->next = tmp;
+        tmp->next = NULL;
+    }
+
+    bool checkPalindrome(Node* tmp1, Node* tmp2) {
+        bool isPalindrome = true;
+        int count = 0;
+        int sz = calculateSize(tmp1);
+
+        int avg = sz/2;
+
+        cout << "sz" << " " << sz << "avg" << " " << avg << endl;
+
+        while(tmp1 != NULL && tmp2 != NULL && count <= avg) {
+            if(tmp1->val != tmp2->val) {
+                cout << tmp1->val << endl;
+                cout << tmp2->val << endl;
+                isPalindrome = false;
+            }
+            count++;
+            tmp1 = tmp1->next;
+            tmp2 = tmp2->next;
+        }
+
+        return isPalindrome;
+    }
+// 1 2 1 1
+// 2
+
 int main () {
 
     Node* head = NULL;
@@ -87,10 +125,12 @@ int main () {
        insertAtTail(head, tail, x);
     }
 
-    removeDuplicate(head);
+    Node* tmpList = head;
+    reverse(head, head);
 
 
-    printList(head);
+    printList(tmpList);
+    // cout << checkPalindrome(tmpList, head);
 
 
     return 0;
