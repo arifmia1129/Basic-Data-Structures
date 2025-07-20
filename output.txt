@@ -1,6 +1,5 @@
-a playing
-c playing
-d playing
-c playing
-f playing
-Not found
+50
+40
+30
+20
+10

@@ -1,8 +1,2 @@
-a b c d e f stop
-6
-play a
-play c
-right
-left
-play f
-right
+5
+10 20 30 40 50
