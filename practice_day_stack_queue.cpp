@@ -114,6 +114,44 @@
 // }
 
 
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int main () {
+//     int n;
+
+//     cin >> n;
+
+//     stack<int> s1;
+
+//     while(n--) {
+//         int x;
+
+//         cin >> x;
+
+//         s1.push(x);
+//     }
+
+//     stack<int> s2;
+
+//     while(!s1.empty()) {
+//         int val = s1.top();
+//         s2.push(val);
+
+//         s1.pop();
+//     }
+
+//     while (!s2.empty())
+//     {
+//         cout << s2.top() << endl;
+//         s2.pop();
+//     }
+    
+
+//     return 0;
+// }
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -122,29 +160,29 @@ int main () {
 
     cin >> n;
 
-    stack<int> s1;
+    queue<int> q;
 
     while(n--) {
         int x;
 
         cin >> x;
 
-        s1.push(x);
+        q.push(x);
     }
 
-    stack<int> s2;
+    stack<int> s;
 
-    while(!s1.empty()) {
-        int val = s1.top();
-        s2.push(val);
+    while(!q.empty()) {
+        int val = q.front();
+        s.push(val);
 
-        s1.pop();
+        q.pop();
     }
 
-    while (!s2.empty())
+    while (!s.empty())
     {
-        cout << s2.top() << endl;
-        s2.pop();
+        cout << s.top() << endl;
+        s.pop();
     }
     
 
