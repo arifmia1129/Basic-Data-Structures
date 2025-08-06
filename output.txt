@@ -1,2 +1,3 @@
-5
-2
+ariba 3 95
+hannan 2 99
+urmi 1 100
